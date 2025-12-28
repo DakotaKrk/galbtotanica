@@ -8,13 +8,18 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Skip Link for Accessibility -->
     <a href="#mainContent" class="skip-link">Hoppa till huvudinnehåll</a>
 
-    <!-- Navigation -->
     <header class="header" id="header">
         <div class="header-container">
-            <a href="#home" class="logo" data-page="home">Galbotanica</a>
+            <a href="#home" class="logo" data-page="home">
+                <img 
+                    src="https://github.com/DakotaKrk/galbtotanica/raw/main/sigill_galbot.png" 
+                    alt="" 
+                    class="logo-sigill"
+                >
+                <span class="logo-text">Galbotanica</span>
+            </a>
 
             <nav class="nav-desktop" role="navigation" aria-label="Huvudnavigation">
                 <a href="#home" class="nav-link active" data-page="home">Home</a>
@@ -36,11 +41,8 @@
         </nav>
     </header>
 
-    <!-- Main Content -->
     <main id="mainContent">
-        <!-- Home Page -->
         <div class="page active" id="page-home">
-            <!-- Hero Section -->
             <section class="hero">
                 <video class="hero-video" id="heroVideo" autoplay muted loop playsinline>
                     <source src="https://github.com/DakotaKrk/dash-test-data/raw/main/20250726_220426545.mp4" type="video/mp4">
@@ -58,12 +60,12 @@
                     <p class="hero-description">Capturing the quiet beauty of botanical forms through fine art photography</p>
                 </div>
                 <div class="scroll-indicator" aria-hidden="true">
-                    <span class="scroll-text">SCROLL</span>
-                    <div class="scroll-line"></div>
+                    <svg class="scroll-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M12 5v14M5 12l7 7 7-7"/>
+                    </svg>
                 </div>
             </section>
 
-            <!-- Featured Section -->
             <section class="featured">
                 <div class="featured-container">
                     <p class="section-label">Selected Works</p>
@@ -95,7 +97,6 @@
             </section>
         </div>
 
-        <!-- About Page -->
         <div class="page" id="page-about">
             <section class="page-hero">
                 <img 
@@ -108,38 +109,46 @@
             </section>
 
             <section class="content-section">
-                <div class="content-container">
-                    <p class="section-label">The Story</p>
-                    <h2 class="section-title-left">Stillness in every frame</h2>
-                    <div class="content-text">
-                        <p>
-                            Galbotanica föddes ur en fascination för naturens tysta skönhet – de 
-                            ögonblick då ljuset faller perfekt över ett blad, eller när dimman 
-                            sveper in och förvandlar det vardagliga till något magiskt.
-                        </p>
-                        <p>
-                            Baserad i Stockholm arbetar jag med botanisk fotografi som utforskar 
-                            gränslandet mellan dokumentation och konst. Varje bild är en inbjudan 
-                            att stanna upp, andas och upptäcka detaljerna vi så ofta missar i 
-                            vardagens hastighet.
-                        </p>
-                        <p>
-                            Mitt arbete finns tillgängligt som fine art prints och Lightroom-presets 
-                            för dig som vill skapa samma atmosfär i dina egna bilder. Varje print 
-                            produceras på arkivbeständigt papper med bläck som bevarar färgerna 
-                            i generationer.
+                <div class="content-container about-layout">
+                    <div class="about-image-wrapper">
+                        <img 
+                            src="https://github.com/DakotaKrk/galbtotanica/raw/main/galbotqueen.jpeg" 
+                            alt="Porträtt"
+                            class="about-portrait"
+                        >
+                    </div>
+                    <div class="about-text-wrapper">
+                        <p class="section-label">The Story</p>
+                        <h2 class="section-title-left">Stillness in every frame</h2>
+                        <div class="content-text">
+                            <p>
+                                Galbotanica föddes ur en fascination för naturens tysta skönhet – de 
+                                ögonblick då ljuset faller perfekt över ett blad, eller när dimman 
+                                sveper in och förvandlar det vardagliga till något magiskt.
+                            </p>
+                            <p>
+                                Baserad i Stockholm arbetar jag med botanisk fotografi som utforskar 
+                                gränslandet mellan dokumentation och konst. Varje bild är en inbjudan 
+                                att stanna upp, andas och upptäcka detaljerna vi så ofta missar i 
+                                vardagens hastighet.
+                            </p>
+                            <p>
+                                Mitt arbete finns tillgängligt som fine art prints och Lightroom-presets 
+                                för dig som vill skapa samma atmosfär i dina egna bilder. Varje print 
+                                produceras på arkivbeständigt papper med bläck som bevarar färgerna 
+                                i generationer.
+                            </p>
+                        </div>
+                        <div class="decorative-line"></div>
+                        <p class="quote">
+                            "I naturen finns en stillhet som läker. Min kamera är verktyget för 
+                            att bevara den."
                         </p>
                     </div>
-                    <div class="decorative-line"></div>
-                    <p class="quote">
-                        "I naturen finns en stillhet som läker. Min kamera är verktyget för 
-                        att bevara den."
-                    </p>
                 </div>
             </section>
         </div>
 
-        <!-- Contact Page -->
         <div class="page" id="page-contact">
             <section class="page-hero">
                 <img 
@@ -191,10 +200,22 @@
         </div>
     </main>
 
-    <!-- Footer -->
+    <button class="back-to-top" id="backToTop" aria-label="Tillbaka till toppen">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 19V5M5 12l7-7 7 7"/>
+        </svg>
+    </button>
+
     <footer class="footer">
         <div class="footer-container">
-            <span class="footer-logo">Galbotanica</span>
+            <div class="footer-logo-wrapper">
+                <img 
+                    src="https://github.com/DakotaKrk/galbtotanica/raw/main/sigill_galbot.png" 
+                    alt="" 
+                    class="footer-sigill"
+                >
+                <span class="footer-logo">Galbotanica</span>
+            </div>
             <p class="footer-copyright">© 2025 Galbotanica. All rights reserved.</p>
         </div>
     </footer>
