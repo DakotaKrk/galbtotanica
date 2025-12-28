@@ -11,6 +11,14 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="preloader" id="preloader">
+        <img 
+            src="https://github.com/DakotaKrk/galbtotanica/raw/e3c14e0355863ecb24ff47fe56a7d87edb662029/sigill_galbot.png" 
+            alt="" 
+            class="preloader-sigill"
+        >
+    </div>
+
     <a href="#main" class="skip-link">Hoppa till huvudinnehåll</a>
 
     <header class="header">
@@ -72,7 +80,15 @@
                 class="page-hero-image"
             >
             <div class="page-hero-overlay"></div>
-            <h1 class="page-hero-title">Contact</h1>
+            <div class="page-hero-content">
+                <img 
+                    src="https://github.com/DakotaKrk/galbtotanica/raw/e3c14e0355863ecb24ff47fe56a7d87edb662029/sigill_galbot.png" 
+                    alt="" 
+                    class="page-hero-sigill"
+                >
+                <p class="page-hero-subtitle">Let's create something beautiful</p>
+                <h1 class="page-hero-title">Contact</h1>
+            </div>
         </section>
 
         <section class="content-section">
@@ -142,8 +158,24 @@
                 <span class="footer-logo">Galbotanica Studio</span>
             </div>
             <p class="footer-copyright">© 2025 Galbotanica Studio. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="privacy.html" class="footer-link">Privacy Policy</a>
+            </div>
         </div>
     </footer>
+
+    <div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Cookie consent">
+        <div class="cookie-content">
+            <p class="cookie-text">
+                We use cookies to analyze site traffic and improve your experience. 
+                <a href="privacy.html">Learn more</a>
+            </p>
+            <div class="cookie-buttons">
+                <button class="cookie-btn cookie-btn-accept" id="cookieAccept">Accept</button>
+                <button class="cookie-btn cookie-btn-decline" id="cookieDecline">Decline</button>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>

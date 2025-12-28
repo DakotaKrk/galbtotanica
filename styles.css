@@ -1,54 +1,57 @@
-/*
- * Galbotanica Studio - Stylesheet
- * 
- * FÄRGINSTÄLLNINGAR:
- * För att ändra footerns färg, ändra värdet på --color-footer nedan.
- * Förslag som får sigillet att "poppa":
- *   #2d3a2e (mörkgrön)
- *   #1e3d2f (smaragd)
- *   #8b6f5c (terrakotta)
- *   #6b5344 (varm brun)
- *   #3d3632 (mörk choklad)
- */
-
 :root {
-    /* Primära färger */
     --color-primary: #5c6356;
     --color-primary-hover: #4a5045;
     --color-footer: #ebe7e1;
-    
-    /* Bakgrunder */
     --color-background: #faf9f7;
     --color-card-bg: #e8e4df;
-    
-    /* Text */
     --color-text: #2d2d2d;
-    --color-text-light: #555555;
-    --color-text-muted: #777777;
-    --color-text-faded: #888888;
-    --color-text-subtle: #999999;
-    --color-white: #ffffff;
-    
-    /* Typsnitt */
+    --color-text-light: #555;
+    --color-text-muted: #777;
+    --color-text-faded: #888;
+    --color-text-subtle: #999;
+    --color-white: #fff;
     --font-serif: 'Cormorant Garamond', Georgia, serif;
     --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    
-    /* Layout */
     --header-height: 80px;
     --max-width: 1400px;
-    
-    /* Animation */
     --transition-fast: 0.3s ease;
 }
 
+.preloader {
+    position: fixed;
+    inset: 0;
+    background-color: var(--color-background);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
 
-/* ==========================================================================
-   BASE
-   ========================================================================== */
+.preloader.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
 
-*,
-*::before,
-*::after {
+.preloader-sigill {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    animation: breathe 2s ease-in-out infinite;
+}
+
+@keyframes breathe {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.6;
+    }
+    50% {
+        transform: scale(1.15);
+        opacity: 1;
+    }
+}
+
+*, *::before, *::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -86,11 +89,6 @@ button {
     cursor: pointer;
 }
 
-
-/* ==========================================================================
-   SKIP LINK (Tillgänglighet)
-   ========================================================================== */
-
 .skip-link {
     position: absolute;
     top: -100px;
@@ -108,11 +106,6 @@ button {
 .skip-link:focus {
     top: 10px;
 }
-
-
-/* ==========================================================================
-   HEADER
-   ========================================================================== */
 
 .header {
     position: fixed;
@@ -140,11 +133,6 @@ button {
     align-items: center;
 }
 
-
-/* ==========================================================================
-   LOGO
-   ========================================================================== */
-
 .logo {
     display: flex;
     align-items: center;
@@ -170,11 +158,6 @@ button {
     color: var(--color-text);
     font-family: var(--font-serif);
 }
-
-
-/* ==========================================================================
-   NAVIGATION - Desktop
-   ========================================================================== */
 
 .nav-desktop {
     display: flex;
@@ -222,11 +205,6 @@ button {
     width: 18px;
     height: 18px;
 }
-
-
-/* ==========================================================================
-   NAVIGATION - Mobile
-   ========================================================================== */
 
 .mobile-menu-btn {
     display: none;
@@ -285,11 +263,6 @@ button {
 .nav-link-mobile.active {
     color: var(--color-text);
 }
-
-
-/* ==========================================================================
-   HERO
-   ========================================================================== */
 
 .hero {
     position: relative;
@@ -386,21 +359,10 @@ button {
 }
 
 @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
-        transform: translateY(0);
-    }
-    40% {
-        transform: translateY(6px);
-    }
-    60% {
-        transform: translateY(3px);
-    }
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(6px); }
+    60% { transform: translateY(3px); }
 }
-
-
-/* ==========================================================================
-   FEATURED SECTION
-   ========================================================================== */
 
 .featured {
     padding: clamp(60px, 10vw, 100px) 0;
@@ -438,11 +400,6 @@ button {
     margin-bottom: 30px;
     color: var(--color-text);
 }
-
-
-/* ==========================================================================
-   GALLERY
-   ========================================================================== */
 
 .gallery-wrapper {
     position: relative;
@@ -515,11 +472,6 @@ button {
     transform: scale(1.03);
 }
 
-
-/* ==========================================================================
-   LIGHTBOX
-   ========================================================================== */
-
 .lightbox {
     position: fixed;
     inset: 0;
@@ -584,11 +536,6 @@ button {
     transform: scale(1);
 }
 
-
-/* ==========================================================================
-   PAGE HERO (About & Contact)
-   ========================================================================== */
-
 .page-hero {
     position: relative;
     height: 50vh;
@@ -621,19 +568,37 @@ button {
     z-index: 1;
 }
 
-.page-hero-title {
+.page-hero-content {
     position: relative;
     z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.page-hero-sigill {
+    width: 140px;
+    height: 140px;
+    object-fit: contain;
+    margin-bottom: 24px;
+    opacity: 0.95;
+}
+
+.page-hero-subtitle {
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 16px;
+    font-family: var(--font-sans);
+}
+
+.page-hero-title {
     font-size: clamp(32px, 7vw, 52px);
     font-weight: 400;
     letter-spacing: 3px;
     color: var(--color-white);
 }
-
-
-/* ==========================================================================
-   CONTENT SECTIONS
-   ========================================================================== */
 
 .content-section {
     padding: clamp(60px, 10vw, 100px) 24px;
@@ -708,11 +673,6 @@ button {
     color: var(--color-text-muted);
 }
 
-
-/* ==========================================================================
-   CONTACT INFO
-   ========================================================================== */
-
 .contact-info {
     display: flex;
     flex-direction: column;
@@ -755,11 +715,6 @@ button {
     font-style: italic;
     color: var(--color-text-faded);
 }
-
-
-/* ==========================================================================
-   COMING SOON (Shop)
-   ========================================================================== */
 
 .coming-soon-container {
     max-width: 700px;
@@ -810,11 +765,6 @@ button {
     color: var(--color-primary);
 }
 
-
-/* ==========================================================================
-   BACK TO TOP
-   ========================================================================== */
-
 .back-to-top {
     position: fixed;
     bottom: 30px;
@@ -830,10 +780,7 @@ button {
     opacity: 0;
     visibility: hidden;
     transform: translateY(20px);
-    transition: opacity var(--transition-fast), 
-                visibility var(--transition-fast), 
-                transform var(--transition-fast), 
-                background-color var(--transition-fast);
+    transition: opacity var(--transition-fast), visibility var(--transition-fast), transform var(--transition-fast), background-color var(--transition-fast);
     z-index: 90;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
 }
@@ -853,11 +800,6 @@ button {
     height: 20px;
     color: var(--color-white);
 }
-
-
-/* ==========================================================================
-   FOOTER
-   ========================================================================== */
 
 .footer {
     background-color: var(--color-footer);
@@ -900,93 +842,215 @@ button {
     font-family: var(--font-sans);
 }
 
+.footer-links {
+    display: flex;
+    gap: 20px;
+    margin-top: 8px;
+}
 
-/* ==========================================================================
-   RESPONSIVE - Tablet & Mobile
-   ========================================================================== */
+.footer-link {
+    font-size: 11px;
+    color: var(--color-text-muted);
+    font-family: var(--font-sans);
+    transition: color var(--transition-fast);
+}
+
+.footer-link:hover {
+    color: var(--color-text);
+}
+
+.policy-container {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.policy-updated {
+    font-size: 14px;
+    color: var(--color-text-muted);
+    margin-bottom: 40px;
+}
+
+.policy-text h2 {
+    font-size: 22px;
+    font-weight: 500;
+    margin: 40px 0 16px;
+    color: var(--color-text);
+}
+
+.policy-text h3 {
+    font-size: 17px;
+    font-weight: 500;
+    margin: 24px 0 12px;
+    color: var(--color-text);
+}
+
+.policy-text p {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--color-text-light);
+    margin-bottom: 16px;
+}
+
+.policy-text ul {
+    margin: 0 0 16px 20px;
+    color: var(--color-text-light);
+}
+
+.policy-text li {
+    font-size: 15px;
+    line-height: 1.8;
+    margin-bottom: 8px;
+}
+
+.policy-text a {
+    color: var(--color-primary);
+    border-bottom: 1px solid var(--color-primary);
+}
+
+.policy-text a:hover {
+    opacity: 0.7;
+}
+
+.cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--color-text);
+    color: var(--color-white);
+    padding: 20px 24px;
+    z-index: 999;
+    transform: translateY(100%);
+    transition: transform 0.4s ease;
+}
+
+.cookie-banner.visible {
+    transform: translateY(0);
+}
+
+.cookie-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.cookie-text {
+    flex: 1;
+    min-width: 280px;
+    font-size: 14px;
+    line-height: 1.6;
+    font-family: var(--font-sans);
+}
+
+.cookie-text a {
+    color: var(--color-white);
+    text-decoration: underline;
+}
+
+.cookie-buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.cookie-btn {
+    padding: 10px 24px;
+    font-size: 13px;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    border: none;
+    cursor: pointer;
+    transition: opacity var(--transition-fast);
+}
+
+.cookie-btn:hover {
+    opacity: 0.85;
+}
+
+.cookie-btn-accept {
+    background-color: var(--color-white);
+    color: var(--color-text);
+}
+
+.cookie-btn-decline {
+    background-color: transparent;
+    color: var(--color-white);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
 
 @media (max-width: 768px) {
     .header-container {
         display: flex;
         justify-content: space-between;
     }
-
-    .nav-desktop {
-        display: none;
-    }
-
+    .nav-desktop,
     .nav-social {
         display: none;
     }
-
     .header-right {
         justify-content: flex-end;
     }
-
     .mobile-menu-btn {
         display: flex;
     }
-
     .hero {
         height: 65vh;
         min-height: 400px;
         max-height: 600px;
     }
-
     .hero-sigill {
         width: 110px;
         height: 110px;
         margin-bottom: 24px;
     }
-
     .about-layout {
         grid-template-columns: 1fr;
         gap: 40px;
     }
-
     .about-image-wrapper {
         position: static;
         max-width: 350px;
         margin: 0 auto;
     }
-
     .about-text-wrapper {
         padding-top: 0;
     }
-
     .gallery-btn {
         display: none;
     }
-
     .gallery-wrapper {
         gap: 0;
     }
-
     .gallery-scroll {
         padding: 10px 24px;
         margin: 0 -24px;
     }
-
     .gallery-item {
         width: 280px;
     }
-
     .contact-info {
         gap: 25px;
     }
-
     .back-to-top {
         bottom: 20px;
         right: 20px;
         width: 44px;
         height: 44px;
     }
-
     .logo-sigill {
         width: 44px;
         height: 44px;
     }
-
+    .page-hero-sigill {
+        width: 110px;
+        height: 110px;
+        margin-bottom: 20px;
+    }
     .lightbox-close {
         top: 15px;
         right: 15px;
@@ -997,42 +1061,42 @@ button {
 
 @media (min-width: 769px) {
     .nav-mobile {
-        display: none !important;
+        display: none;
     }
 }
 
-
-/* ==========================================================================
-   RESPONSIVE - Small Mobile
-   ========================================================================== */
-
 @media (max-width: 480px) {
-    .hero-subtitle {
+    .hero-subtitle,
+    .page-hero-subtitle {
         font-size: 10px;
         letter-spacing: 3px;
     }
-
-    .hero-sigill {
+    .hero-sigill,
+    .page-hero-sigill {
         width: 90px;
         height: 90px;
         margin-bottom: 20px;
     }
-
     .section-label {
         font-size: 10px;
     }
-
     .contact-link,
     .contact-text {
         font-size: 16px;
     }
-
     .logo-text {
         font-size: 16px;
         letter-spacing: 2px;
     }
-
     .gallery-item {
         width: 250px;
+    }
+    .cookie-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .cookie-buttons {
+        width: 100%;
+        justify-content: center;
     }
 }
