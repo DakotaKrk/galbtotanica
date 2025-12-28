@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Om Galbotanica Studio - Botanisk fotografi fokuserad på stillhet och natur.">
+    <title>About - Galbotanica Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <a href="#main" class="skip-link">Hoppa till huvudinnehåll</a>
+
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <img 
+                    src="https://github.com/DakotaKrk/galbtotanica/raw/e3c14e0355863ecb24ff47fe56a7d87edb662029/sigill_galbot.png" 
+                    alt="" 
+                    class="logo-sigill"
+                >
+                <span class="logo-text">Galbotanica Studio</span>
+            </a>
+
+            <nav class="nav-desktop" role="navigation" aria-label="Huvudnavigation">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link active">About</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Öppna meny" aria-expanded="false" aria-controls="navMobile">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </div>
+
+        <nav class="nav-mobile" id="navMobile" role="navigation" aria-label="Mobilnavigation">
+            <a href="index.html" class="nav-link-mobile">Home</a>
+            <a href="about.html" class="nav-link-mobile active">About</a>
+            <a href="contact.html" class="nav-link-mobile">Contact</a>
+        </nav>
+    </header>
+
+    <main id="main">
+        <section class="page-hero">
+            <img 
+                src="https://galbotanica.com/botanical_print-2.jpg" 
+                alt="About Galbotanica Studio"
+                class="page-hero-image"
+            >
+            <div class="page-hero-overlay"></div>
+            <h1 class="page-hero-title">About</h1>
+        </section>
+
+        <section class="content-section">
+            <div class="about-layout">
+                <div class="about-image-wrapper">
+                    <img 
+                        src="https://github.com/DakotaKrk/galbtotanica/raw/e3c14e0355863ecb24ff47fe56a7d87edb662029/galbotqueen.jpeg" 
+                        alt="Porträtt"
+                        class="about-portrait"
+                    >
+                </div>
+                <div class="about-text-wrapper">
+                    <p class="section-label">The Story</p>
+                    <h2 class="section-title-left">Stillness in every frame</h2>
+                    <div class="content-text">
+                        <p>
+                            Galbotanica föddes ur en fascination för naturens tysta skönhet – de 
+                            ögonblick då ljuset faller perfekt över ett blad, eller när dimman 
+                            sveper in och förvandlar det vardagliga till något magiskt.
+                        </p>
+                        <p>
+                            Baserad i Stockholm arbetar jag med botanisk fotografi som utforskar 
+                            gränslandet mellan dokumentation och konst. Varje bild är en inbjudan 
+                            att stanna upp, andas och upptäcka detaljerna vi så ofta missar i 
+                            vardagens hastighet.
+                        </p>
+                        <p>
+                            Mitt arbete finns tillgängligt som fine art prints och Lightroom-presets 
+                            för dig som vill skapa samma atmosfär i dina egna bilder. Varje print 
+                            produceras på arkivbeständigt papper med bläck som bevarar färgerna 
+                            i generationer.
+                        </p>
+                    </div>
+                    <div class="decorative-line"></div>
+                    <p class="quote">
+                        "I naturen finns en stillhet som läker. Min kamera är verktyget för 
+                        att bevara den."
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Bildvisare">
+        <button class="lightbox-close" id="lightboxClose" aria-label="Stäng bildvisare">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 6L6 18M6 6l12 12"/>
+            </svg>
+        </button>
+        <div class="lightbox-content">
+            <img src="" alt="" id="lightboxImage">
+        </div>
+    </div>
+
+    <button class="back-to-top" id="backToTop" aria-label="Tillbaka till toppen">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 19V5M5 12l7-7 7 7"/>
+        </svg>
+    </button>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo-wrapper">
+                <img 
+                    src="https://github.com/DakotaKrk/galbtotanica/raw/e3c14e0355863ecb24ff47fe56a7d87edb662029/sigill_galbot.png" 
+                    alt="" 
+                    class="footer-sigill"
+                >
+                <span class="footer-logo">Galbotanica Studio</span>
+            </div>
+            <p class="footer-copyright">© 2025 Galbotanica Studio. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

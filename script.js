@@ -1,18 +1,43 @@
+/**
+ * Galbotanica Studio - JavaScript
+ * 
+ * Funktioner:
+ * - Mobilmeny (hamburger)
+ * - Video fallback
+ * - Back to top-knapp
+ * - Bildgalleri scroll
+ * - Lightbox
+ */
+
 (function() {
     'use strict';
 
-    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-    const navMobile = document.getElementById('navMobile');
-    const heroVideo = document.getElementById('heroVideo');
-    const heroFallbackImage = document.getElementById('heroFallbackImage');
-    const backToTopBtn = document.getElementById('backToTop');
-    const pages = document.querySelectorAll('.page');
-    const allNavLinks = document.querySelectorAll('[data-page]');
+    // ==========================================================================
+    // DOM Elements
+    // ==========================================================================
+    
+    var mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    var navMobile = document.getElementById('navMobile');
+    var heroVideo = document.getElementById('heroVideo');
+    var heroFallbackImage = document.getElementById('heroFallbackImage');
+    var backToTopBtn = document.getElementById('backToTop');
+    var galleryScroll = document.getElementById('galleryScroll');
+    var galleryPrev = document.getElementById('galleryPrev');
+    var galleryNext = document.getElementById('galleryNext');
+    var lightbox = document.getElementById('lightbox');
+    var lightboxImage = document.getElementById('lightboxImage');
+    var lightboxClose = document.getElementById('lightboxClose');
+    var galleryItems = document.querySelectorAll('.gallery-item[data-lightbox]');
 
-    let currentPage = 'home';
+
+    // ==========================================================================
+    // Mobile Menu
+    // ==========================================================================
 
     function toggleMobileMenu() {
-        const isOpen = mobileMenuBtn.classList.contains('active');
+        if (!mobileMenuBtn || !navMobile) return;
+        
+        var isOpen = mobileMenuBtn.classList.contains('active');
         
         mobileMenuBtn.classList.toggle('active');
         navMobile.classList.toggle('active');
@@ -22,45 +47,18 @@
     }
 
     function closeMobileMenu() {
+        if (!mobileMenuBtn || !navMobile) return;
+        
         mobileMenuBtn.classList.remove('active');
         navMobile.classList.remove('active');
         mobileMenuBtn.setAttribute('aria-expanded', 'false');
         mobileMenuBtn.setAttribute('aria-label', 'Öppna meny');
     }
 
-    function switchPage(pageName) {
-        if (pageName === currentPage) {
-            closeMobileMenu();
-            return;
-        }
 
-        pages.forEach(function(page) {
-            page.classList.remove('active');
-        });
-
-        const targetPage = document.getElementById('page-' + pageName);
-        if (targetPage) {
-            targetPage.classList.add('active');
-            currentPage = pageName;
-        }
-
-        updateActiveNavLinks(pageName);
-        closeMobileMenu();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        history.pushState(null, '', '#' + pageName);
-    }
-
-    function updateActiveNavLinks(activePage) {
-        allNavLinks.forEach(function(link) {
-            const linkPage = link.getAttribute('data-page');
-            
-            if (linkPage === activePage) {
-                link.classList.add('active');
-            } else {
-                link.classList.remove('active');
-            }
-        });
-    }
+    // ==========================================================================
+    // Video Fallback
+    // ==========================================================================
 
     function handleVideoError() {
         if (heroVideo && heroFallbackImage) {
@@ -69,38 +67,16 @@
         }
     }
 
-    function handleInitialHash() {
-        const hash = window.location.hash.replace('#', '');
-        const validPages = ['home', 'about', 'contact'];
-        
-        if (hash && validPages.includes(hash)) {
-            switchPage(hash);
-        }
-    }
 
-    function handlePopState() {
-        const hash = window.location.hash.replace('#', '') || 'home';
-        const validPages = ['home', 'about', 'contact'];
-        
-        if (validPages.includes(hash)) {
-            pages.forEach(function(page) {
-                page.classList.remove('active');
-            });
-
-            const targetPage = document.getElementById('page-' + hash);
-            if (targetPage) {
-                targetPage.classList.add('active');
-                currentPage = hash;
-            }
-
-            updateActiveNavLinks(hash);
-            closeMobileMenu();
-        }
-    }
+    // ==========================================================================
+    // Back to Top
+    // ==========================================================================
 
     function handleScroll() {
-        const scrollPosition = window.scrollY;
-        const showThreshold = 300;
+        if (!backToTopBtn) return;
+        
+        var scrollPosition = window.scrollY;
+        var showThreshold = 300;
 
         if (scrollPosition > showThreshold) {
             backToTopBtn.classList.add('visible');
@@ -113,49 +89,134 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
+
+    // ==========================================================================
+    // Gallery
+    // ==========================================================================
+
+    function scrollGallery(direction) {
+        if (!galleryScroll) return;
+        
+        var scrollAmount = 340;
+        var currentScroll = galleryScroll.scrollLeft;
+        var newScroll = direction === 'next' 
+            ? currentScroll + scrollAmount 
+            : currentScroll - scrollAmount;
+        
+        galleryScroll.scrollTo({ left: newScroll, behavior: 'smooth' });
+    }
+
+
+    // ==========================================================================
+    // Lightbox
+    // ==========================================================================
+
+    function openLightbox(imageSrc, imageAlt) {
+        if (!lightbox || !lightboxImage) return;
+        
+        lightboxImage.src = imageSrc;
+        lightboxImage.alt = imageAlt || '';
+        lightbox.classList.add('active');
+        document.body.classList.add('lightbox-open');
+    }
+
+    function closeLightbox() {
+        if (!lightbox || !lightboxImage) return;
+        
+        lightbox.classList.remove('active');
+        document.body.classList.remove('lightbox-open');
+        
+        setTimeout(function() {
+            lightboxImage.src = '';
+            lightboxImage.alt = '';
+        }, 300);
+    }
+
+
+    // ==========================================================================
+    // Event Listeners
+    // ==========================================================================
+
+    // Mobile menu
     if (mobileMenuBtn) {
         mobileMenuBtn.addEventListener('click', toggleMobileMenu);
     }
 
-    allNavLinks.forEach(function(link) {
-        link.addEventListener('click', function(event) {
-            event.preventDefault();
-            const pageName = this.getAttribute('data-page');
-            switchPage(pageName);
-        });
-    });
-
+    // Video error
     if (heroVideo) {
         heroVideo.addEventListener('error', handleVideoError);
         
-        const videoSource = heroVideo.querySelector('source');
+        var videoSource = heroVideo.querySelector('source');
         if (videoSource) {
             videoSource.addEventListener('error', handleVideoError);
         }
     }
 
+    // Back to top
     if (backToTopBtn) {
         backToTopBtn.addEventListener('click', scrollToTop);
         window.addEventListener('scroll', handleScroll);
     }
 
-    window.addEventListener('popstate', handlePopState);
+    // Gallery navigation
+    if (galleryPrev) {
+        galleryPrev.addEventListener('click', function() {
+            scrollGallery('prev');
+        });
+    }
 
+    if (galleryNext) {
+        galleryNext.addEventListener('click', function() {
+            scrollGallery('next');
+        });
+    }
+
+    // Gallery lightbox
+    galleryItems.forEach(function(item) {
+        item.addEventListener('click', function() {
+            var imageSrc = this.getAttribute('data-lightbox');
+            var imageAlt = this.querySelector('img').alt;
+            openLightbox(imageSrc, imageAlt);
+        });
+    });
+
+    // Lightbox close
+    if (lightboxClose) {
+        lightboxClose.addEventListener('click', closeLightbox);
+    }
+
+    if (lightbox) {
+        lightbox.addEventListener('click', function(event) {
+            if (event.target === lightbox) {
+                closeLightbox();
+            }
+        });
+    }
+
+    // Close menus on outside click
     document.addEventListener('click', function(event) {
-        const isClickInsideMenu = navMobile && navMobile.contains(event.target);
-        const isClickOnButton = mobileMenuBtn && mobileMenuBtn.contains(event.target);
+        if (!navMobile || !mobileMenuBtn) return;
         
-        if (!isClickInsideMenu && !isClickOnButton && navMobile && navMobile.classList.contains('active')) {
+        var isClickInsideMenu = navMobile.contains(event.target);
+        var isClickOnButton = mobileMenuBtn.contains(event.target);
+        
+        if (!isClickInsideMenu && !isClickOnButton && navMobile.classList.contains('active')) {
             closeMobileMenu();
         }
     });
 
+    // Escape key handler
     document.addEventListener('keydown', function(event) {
-        if (event.key === 'Escape' && navMobile && navMobile.classList.contains('active')) {
-            closeMobileMenu();
-            mobileMenuBtn.focus();
+        if (event.key === 'Escape') {
+            if (lightbox && lightbox.classList.contains('active')) {
+                closeLightbox();
+            } else if (navMobile && navMobile.classList.contains('active')) {
+                closeMobileMenu();
+                if (mobileMenuBtn) {
+                    mobileMenuBtn.focus();
+                }
+            }
         }
     });
 
-    handleInitialHash();
 })();
