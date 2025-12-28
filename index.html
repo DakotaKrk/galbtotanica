@@ -27,19 +27,39 @@
             <nav class="nav-desktop" role="navigation" aria-label="Huvudnavigation">
                 <a href="index.html" class="nav-link active">Home</a>
                 <a href="about.html" class="nav-link">About</a>
+                <a href="shop.html" class="nav-link">Shop</a>
                 <a href="contact.html" class="nav-link">Contact</a>
             </nav>
 
-            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Öppna meny" aria-expanded="false" aria-controls="navMobile">
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-            </button>
+            <div class="header-right">
+                <div class="nav-social">
+                    <a href="https://instagram.com/natalykyrk" target="_blank" rel="noopener noreferrer" class="nav-social-link" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                        </svg>
+                    </a>
+                    <a href="mailto:nataly.kyrk@gmail.com" class="nav-social-link" aria-label="Email">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Öppna meny" aria-expanded="false" aria-controls="navMobile">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
         </div>
 
         <nav class="nav-mobile" id="navMobile" role="navigation" aria-label="Mobilnavigation">
             <a href="index.html" class="nav-link-mobile active">Home</a>
             <a href="about.html" class="nav-link-mobile">About</a>
+            <a href="shop.html" class="nav-link-mobile">Shop</a>
             <a href="contact.html" class="nav-link-mobile">Contact</a>
         </nav>
     </header>
@@ -47,7 +67,7 @@
     <main id="main">
         <section class="hero">
             <video class="hero-video" id="heroVideo" autoplay muted loop playsinline>
-                <source src="https://github.com/DakotaKrk/dash-test-data/raw/main/20250726_220426545.mp4" type="video/mp4">
+                <source src="https://res.cloudinary.com/dklnxuzlz/video/upload/q_auto:best/v1766922844/20250726_220426545_wag7qq.mp4" type="video/mp4">
             </video>
             <img 
                 class="hero-fallback-image" 
