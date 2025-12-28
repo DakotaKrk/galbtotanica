@@ -1,0 +1,616 @@
+/* ========================================
+   CSS Variables
+   ======================================== */
+:root {
+    --color-primary: #5c6356;
+    --color-background: #faf9f7;
+    --color-text: #2d2d2d;
+    --color-text-light: #555;
+    --color-text-muted: #777;
+    --color-text-faded: #888;
+    --color-text-subtle: #999;
+    --color-card-bg: #e8e4df;
+    --color-white: #fff;
+
+    --font-serif: Georgia, 'Times New Roman', serif;
+    --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+    --header-height: 70px;
+    --max-width: 1400px;
+    --max-width-content: 700px;
+    --max-width-content-narrow: 600px;
+
+    --transition-fast: 0.3s ease;
+}
+
+/* ========================================
+   Reset & Base Styles
+   ======================================== */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-serif);
+    background-color: var(--color-background);
+    color: var(--color-text);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* Skip Link for Accessibility */
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding: 12px 24px;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    z-index: 1000;
+    transition: top 0.3s ease;
+}
+
+.skip-link:focus {
+    top: 10px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+/* ========================================
+   Header & Navigation
+   ======================================== */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--color-primary);
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: var(--header-height);
+}
+
+.logo {
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--color-white);
+    font-family: var(--font-serif);
+    transition: opacity var(--transition-fast);
+}
+
+.logo:hover {
+    opacity: 0.85;
+}
+
+/* Desktop Navigation */
+.nav-desktop {
+    display: flex;
+    gap: 35px;
+    align-items: center;
+}
+
+.nav-link {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.7);
+    font-family: var(--font-sans);
+    font-weight: 500;
+    padding: 8px 0;
+    border-bottom: 1px solid transparent;
+    transition: all var(--transition-fast);
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--color-white);
+    border-bottom-color: var(--color-white);
+}
+
+/* Mobile Menu Button */
+.mobile-menu-btn {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    padding: 10px;
+}
+
+.hamburger-line {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: var(--color-white);
+    transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+
+.mobile-menu-btn.active .hamburger-line:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.mobile-menu-btn.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-btn.active .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Mobile Navigation */
+.nav-mobile {
+    display: none;
+    flex-direction: column;
+    background-color: var(--color-primary);
+    padding: 20px 24px 30px;
+    gap: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-mobile.active {
+    display: flex;
+}
+
+.nav-link-mobile {
+    font-size: 14px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.7);
+    font-family: var(--font-sans);
+    font-weight: 500;
+    padding: 12px 0;
+    transition: color var(--transition-fast);
+}
+
+.nav-link-mobile:hover,
+.nav-link-mobile.active {
+    color: var(--color-white);
+}
+
+/* ========================================
+   Page System
+   ======================================== */
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
+/* ========================================
+   Hero Section (Home)
+   ======================================== */
+.hero {
+    position: relative;
+    height: 100vh;
+    min-height: 500px;
+    max-height: 900px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    margin-top: var(--header-height);
+}
+
+.hero-video,
+.hero-fallback-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    z-index: 0;
+}
+
+.hero-fallback-image {
+    display: none;
+}
+
+.hero-fallback-image.visible {
+    display: block;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 24px;
+    max-width: 800px;
+}
+
+.hero-subtitle {
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 20px;
+    font-family: var(--font-sans);
+}
+
+.hero-title {
+    font-size: clamp(32px, 8vw, 56px);
+    font-weight: 300;
+    letter-spacing: 2px;
+    color: var(--color-white);
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.hero-description {
+    font-size: clamp(14px, 3vw, 18px);
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.85);
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.scroll-text {
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: rgba(255, 255, 255, 0.6);
+    font-family: var(--font-sans);
+}
+
+.scroll-line {
+    width: 1px;
+    height: 30px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.6), transparent);
+}
+
+/* ========================================
+   Featured Section (Home)
+   ======================================== */
+.featured {
+    padding: clamp(60px, 10vw, 100px) 24px;
+    background-color: var(--color-background);
+}
+
+.featured-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.section-label {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    margin-bottom: 15px;
+    font-family: var(--font-sans);
+}
+
+.section-title {
+    font-size: clamp(24px, 5vw, 36px);
+    font-weight: 300;
+    letter-spacing: 1px;
+    margin-bottom: 50px;
+    color: var(--color-text);
+}
+
+.section-title-left {
+    font-size: clamp(24px, 5vw, 32px);
+    font-weight: 300;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+    color: var(--color-text);
+}
+
+/* Image Grid */
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.image-card {
+    position: relative;
+    aspect-ratio: 4/5;
+    overflow: hidden;
+    background-color: var(--color-card-bg);
+}
+
+.image-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.image-card:hover img {
+    transform: scale(1.03);
+}
+
+/* ========================================
+   Page Hero (About & Contact)
+   ======================================== */
+.page-hero {
+    position: relative;
+    height: 50vh;
+    min-height: 300px;
+    max-height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    margin-top: var(--header-height);
+}
+
+.page-hero-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    z-index: 0;
+}
+
+.page-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.45);
+    z-index: 1;
+}
+
+.page-hero-title {
+    position: relative;
+    z-index: 2;
+    font-size: clamp(28px, 6vw, 44px);
+    font-weight: 300;
+    letter-spacing: 2px;
+    color: var(--color-white);
+}
+
+/* ========================================
+   Content Sections (About & Contact)
+   ======================================== */
+.content-section {
+    padding: clamp(60px, 10vw, 100px) 24px;
+    background-color: var(--color-background);
+}
+
+.content-container {
+    max-width: var(--max-width-content);
+    margin: 0 auto;
+}
+
+.content-container.content-center {
+    max-width: var(--max-width-content-narrow);
+    text-align: center;
+}
+
+.content-text {
+    font-size: clamp(15px, 2.5vw, 17px);
+    line-height: 1.9;
+    color: var(--color-text-light);
+}
+
+.content-text p {
+    margin-bottom: 25px;
+}
+
+.content-text p:last-child {
+    margin-bottom: 0;
+}
+
+.content-intro {
+    font-size: clamp(15px, 2.5vw, 17px);
+    line-height: 1.8;
+    color: var(--color-text-light);
+    margin-bottom: 50px;
+}
+
+.decorative-line {
+    width: 60px;
+    height: 1px;
+    background-color: var(--color-primary);
+    margin: 50px 0;
+}
+
+.content-center .decorative-line {
+    margin: 50px auto;
+}
+
+.quote {
+    font-size: 16px;
+    font-style: italic;
+    color: var(--color-text-muted);
+}
+
+/* ========================================
+   Contact Info
+   ======================================== */
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+}
+
+.contact-item {
+    text-align: center;
+}
+
+.contact-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--color-text-subtle);
+    margin-bottom: 8px;
+    font-family: var(--font-sans);
+}
+
+.contact-link {
+    font-size: 18px;
+    color: var(--color-text);
+    border-bottom: 1px solid var(--color-primary);
+    padding-bottom: 2px;
+    transition: color var(--transition-fast);
+}
+
+.contact-link:hover {
+    color: var(--color-primary);
+}
+
+.contact-text {
+    font-size: 18px;
+    color: var(--color-text);
+}
+
+.response-time {
+    font-size: 14px;
+    font-style: italic;
+    color: var(--color-text-faded);
+}
+
+/* ========================================
+   Footer
+   ======================================== */
+.footer {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding: 40px 24px;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.footer-logo {
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-family: var(--font-serif);
+}
+
+.footer-copyright {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+    font-family: var(--font-sans);
+}
+
+/* ========================================
+   Responsive Design
+   ======================================== */
+@media (max-width: 768px) {
+    .nav-desktop {
+        display: none;
+    }
+
+    .mobile-menu-btn {
+        display: flex;
+    }
+
+    .hero {
+        min-height: 450px;
+        max-height: 700px;
+    }
+
+    .scroll-indicator {
+        bottom: 20px;
+    }
+
+    .image-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .contact-info {
+        gap: 25px;
+    }
+}
+
+@media (min-width: 769px) {
+    .nav-mobile {
+        display: none !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-subtitle {
+        font-size: 10px;
+        letter-spacing: 3px;
+    }
+
+    .section-label {
+        font-size: 10px;
+    }
+
+    .contact-link,
+    .contact-text {
+        font-size: 16px;
+    }
+}

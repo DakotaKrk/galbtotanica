@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Galbotanica - Photography focused on stillness & nature. Fine art prints and Lightroom presets.">
+    <title>Galbotanica</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Skip Link for Accessibility -->
+    <a href="#mainContent" class="skip-link">Hoppa till huvudinnehåll</a>
+
+    <!-- Navigation -->
+    <header class="header" id="header">
+        <div class="header-container">
+            <a href="#home" class="logo" data-page="home">Galbotanica</a>
+
+            <nav class="nav-desktop" role="navigation" aria-label="Huvudnavigation">
+                <a href="#home" class="nav-link active" data-page="home">Home</a>
+                <a href="#about" class="nav-link" data-page="about">About</a>
+                <a href="#contact" class="nav-link" data-page="contact">Contact</a>
+            </nav>
+
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Öppna meny" aria-expanded="false" aria-controls="navMobile">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </div>
+
+        <nav class="nav-mobile" id="navMobile" role="navigation" aria-label="Mobilnavigation">
+            <a href="#home" class="nav-link-mobile" data-page="home">Home</a>
+            <a href="#about" class="nav-link-mobile" data-page="about">About</a>
+            <a href="#contact" class="nav-link-mobile" data-page="contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main id="mainContent">
+        <!-- Home Page -->
+        <div class="page active" id="page-home">
+            <!-- Hero Section -->
+            <section class="hero">
+                <video class="hero-video" id="heroVideo" autoplay muted loop playsinline>
+                    <source src="https://github.com/DakotaKrk/dash-test-data/raw/main/20250726_220426545.mp4" type="video/mp4">
+                </video>
+                <img 
+                    class="hero-fallback-image" 
+                    id="heroFallbackImage"
+                    src="https://galbotanica.com/botanical_print.jpg" 
+                    alt="Botanical photography"
+                >
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <p class="hero-subtitle">Photography focused on stillness & nature</p>
+                    <h1 class="hero-title">Galbotanica</h1>
+                    <p class="hero-description">Capturing the quiet beauty of botanical forms through fine art photography</p>
+                </div>
+                <div class="scroll-indicator" aria-hidden="true">
+                    <span class="scroll-text">SCROLL</span>
+                    <div class="scroll-line"></div>
+                </div>
+            </section>
+
+            <!-- Featured Section -->
+            <section class="featured">
+                <div class="featured-container">
+                    <p class="section-label">Selected Works</p>
+                    <h2 class="section-title">Botanical Collection</h2>
+                    <div class="image-grid">
+                        <div class="image-card">
+                            <img 
+                                src="https://galbotanica.com/botanical_print.jpg" 
+                                alt="Botanical Print 1"
+                                loading="lazy"
+                            >
+                        </div>
+                        <div class="image-card">
+                            <img 
+                                src="https://galbotanica.com/botanical_print-2.jpg" 
+                                alt="Botanical Print 2"
+                                loading="lazy"
+                            >
+                        </div>
+                        <div class="image-card">
+                            <img 
+                                src="https://galbotanica.com/botanical_print-5.jpg" 
+                                alt="Botanical Print 5"
+                                loading="lazy"
+                            >
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- About Page -->
+        <div class="page" id="page-about">
+            <section class="page-hero">
+                <img 
+                    src="https://galbotanica.com/botanical_print-2.jpg" 
+                    alt="About Galbotanica"
+                    class="page-hero-image"
+                >
+                <div class="page-hero-overlay"></div>
+                <h1 class="page-hero-title">About</h1>
+            </section>
+
+            <section class="content-section">
+                <div class="content-container">
+                    <p class="section-label">The Story</p>
+                    <h2 class="section-title-left">Stillness in every frame</h2>
+                    <div class="content-text">
+                        <p>
+                            Galbotanica föddes ur en fascination för naturens tysta skönhet – de 
+                            ögonblick då ljuset faller perfekt över ett blad, eller när dimman 
+                            sveper in och förvandlar det vardagliga till något magiskt.
+                        </p>
+                        <p>
+                            Baserad i Stockholm arbetar jag med botanisk fotografi som utforskar 
+                            gränslandet mellan dokumentation och konst. Varje bild är en inbjudan 
+                            att stanna upp, andas och upptäcka detaljerna vi så ofta missar i 
+                            vardagens hastighet.
+                        </p>
+                        <p>
+                            Mitt arbete finns tillgängligt som fine art prints och Lightroom-presets 
+                            för dig som vill skapa samma atmosfär i dina egna bilder. Varje print 
+                            produceras på arkivbeständigt papper med bläck som bevarar färgerna 
+                            i generationer.
+                        </p>
+                    </div>
+                    <div class="decorative-line"></div>
+                    <p class="quote">
+                        "I naturen finns en stillhet som läker. Min kamera är verktyget för 
+                        att bevara den."
+                    </p>
+                </div>
+            </section>
+        </div>
+
+        <!-- Contact Page -->
+        <div class="page" id="page-contact">
+            <section class="page-hero">
+                <img 
+                    src="https://galbotanica.com/botanical_print-5.jpg" 
+                    alt="Contact Galbotanica"
+                    class="page-hero-image"
+                >
+                <div class="page-hero-overlay"></div>
+                <h1 class="page-hero-title">Contact</h1>
+            </section>
+
+            <section class="content-section">
+                <div class="content-container content-center">
+                    <p class="section-label">Get in Touch</p>
+                    <h2 class="section-title">Let's connect</h2>
+                    <p class="content-intro">
+                        Har du frågor om prints, samarbeten eller bara vill säga hej? 
+                        Jag svarar gärna på alla meddelanden.
+                    </p>
+
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <p class="contact-label">Email</p>
+                            <a href="mailto:hello@galbotanica.com" class="contact-link">
+                                hello@galbotanica.com
+                            </a>
+                        </div>
+                        <div class="contact-item">
+                            <p class="contact-label">Instagram</p>
+                            <a 
+                                href="https://instagram.com/galbotanica" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                class="contact-link"
+                            >
+                                @galbotanica
+                            </a>
+                        </div>
+                        <div class="contact-item">
+                            <p class="contact-label">Based in</p>
+                            <p class="contact-text">Stockholm, Sweden</p>
+                        </div>
+                    </div>
+
+                    <div class="decorative-line"></div>
+                    <p class="response-time">Svarstid vanligtvis inom 24-48 timmar</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <span class="footer-logo">Galbotanica</span>
+            <p class="footer-copyright">© 2025 Galbotanica. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
